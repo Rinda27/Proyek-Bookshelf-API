@@ -13,7 +13,7 @@ const addBookHandler = (request, h) => {
     reading,
   } = request.payload;
 
-  if (!name) {
+  if (name === undefined) {
     const response = h.response({
       status: 'fail',
       message: 'Gagal menambahkan buku. Mohon isi nama buku',
@@ -75,7 +75,6 @@ const addBookHandler = (request, h) => {
 
 const getAllBooksHandler = (request, h) => {
   const { name, reading, finished } = request.query;
-
   let filteredBooks = books;
 
   if (name) {
